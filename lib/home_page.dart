@@ -1,6 +1,4 @@
-import 'package:aplikasi01/custom_box.dart';
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
 import 'package:myapp/custom_box.dart';
 
 class HomePage extends StatefulWidget {

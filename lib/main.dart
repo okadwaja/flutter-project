@@ -1,6 +1,4 @@
-import 'package:aplikasi01/home_page.dart';
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
 import 'package:myapp/home_page.dart';
 
 void main() {
