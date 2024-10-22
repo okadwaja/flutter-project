@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/custom_box.dart';
+import 'package:aplikasi01/custom_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
