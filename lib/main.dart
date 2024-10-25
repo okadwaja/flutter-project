@@ -108,7 +108,7 @@ class ChatListView extends StatelessWidget {
           leading: CircleAvatar(
             backgroundImage: AssetImage('assets/avatar3.png'),
           ),
-          title: Text('Anton'),
+          title: Text('Anton Ganteng'),
           subtitle: Text('Sampai Jumpa...'),
           trailing: Column(
             mainAxisSize:
@@ -129,7 +129,7 @@ class ChatListView extends StatelessWidget {
           leading: CircleAvatar(
             backgroundImage: AssetImage('assets/avatar1.png'),
           ),
-          title: Text('Andrius Schneider'),
+          title: Text('Budi Tampan'),
           subtitle: Text(
             'Typing...',
             style: TextStyle(
@@ -154,8 +154,8 @@ class ChatListView extends StatelessWidget {
           leading: CircleAvatar(
             backgroundImage: AssetImage('assets/avatar2.png'),
           ),
-          title: Text('Anna Payet'),
-          subtitle: Text('Best breakfast ever'),
+          title: Text('Cici Caca'),
+          subtitle: Text('Hallo selamat pagi'),
           trailing: Text('9:37'),
         ),
         // Tambahkan ListTile lain sesuai kebutuhan
