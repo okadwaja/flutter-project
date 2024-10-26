@@ -41,6 +41,10 @@ class WhatsAppHomePage extends StatelessWidget {
             IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
           ],
           bottom: TabBar(
+            isScrollable: true,
+            indicatorColor: Colors.transparent, // Garis bawah tab transparan
+            labelColor: Colors.green, // Warna teks aktif
+            unselectedLabelColor: Colors.black, // Warna teks tidak aktif
             tabs: [
               Tab(
                 child: Container(
@@ -50,8 +54,10 @@ class WhatsAppHomePage extends StatelessWidget {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child:
-                      const Text("All", style: TextStyle(color: Colors.green)),
+                  child: const Align(
+                    alignment: Alignment.centerLeft, // Rata kiri
+                    child: Text("All", style: TextStyle(color: Colors.green)),
+                  ),
                 ),
               ),
               Tab(
@@ -61,8 +67,11 @@ class WhatsAppHomePage extends StatelessWidget {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: const Text("Unread",
-                      style: TextStyle(color: Colors.black)),
+                  child: const Align(
+                    alignment: Alignment.centerLeft, // Rata kiri
+                    child:
+                        Text("Unread", style: TextStyle(color: Colors.black)),
+                  ),
                 ),
               ),
               Tab(
@@ -72,17 +81,14 @@ class WhatsAppHomePage extends StatelessWidget {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: const Text("Groups",
-                      style: TextStyle(color: Colors.black)),
+                  child: const Align(
+                    alignment: Alignment.centerLeft, // Rata kiri
+                    child:
+                        Text("Groups", style: TextStyle(color: Colors.black)),
+                  ),
                 ),
               ),
             ],
-            indicatorColor: Colors
-                .transparent, // Mengubah warna garis bawah tab menjadi transparan
-            labelColor: Colors
-                .green, // Mengubah warna teks tab yang aktif menjadi hijau
-            unselectedLabelColor:
-                Colors.black, // Mengubah warna teks tab yang tidak aktif
           ),
         ),
         body: const TabBarView(
