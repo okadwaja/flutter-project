@@ -3,8 +3,15 @@ import 'package:myapp/resources/dimentions.dart';
 import 'package:myapp/widgets/post_action.dart';
 import 'package:myapp/widgets/post_title.dart';
 
+import '../models/moment.dart';
+
 class PostItem extends StatelessWidget {
-  const PostItem({super.key});
+  const PostItem({
+    super.key,
+    required this.moment,
+  });
+
+  final Moment moment;
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +24,21 @@ class PostItem extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(extraLargeSize),
-          image: const DecorationImage(
+          image: DecorationImage(
             // image: AssetImage('assets/images/moments_background_dark.png'),
-            image: NetworkImage('https://picsum.photos/800/600?random=3'),
+            image: NetworkImage(moment.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            PostTitle(),
+            PostTitle(
+              creator: moment.creator,
+              location: moment.location,
+            ),
             Padding(
-              padding: EdgeInsets.all(smallSize),
+              padding: const EdgeInsets.all(smallSize),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -36,24 +46,24 @@ class PostItem extends StatelessWidget {
                     children: [
                       PostAction(
                         icon: 'assets/icons/fi-br-heart.svg',
-                        label: '230',
+                        label: moment.likeCount.toString(),
                       ),
                       PostAction(
                         icon: 'assets/icons/fi-br-comment.svg',
-                        label: '50',
+                        label: moment.commentCount.toString(),
                       ),
                       PostAction(
                         icon: 'assets/icons/fi-br-bookmark.svg',
-                        label: '10',
+                        label: moment.bookmarkCount.toString(),
                       ),
                     ],
                   ),
                   Padding(
-                    padding:
-                        EdgeInsets.only(left: largeSize, bottom: mediumSize),
+                    padding: const EdgeInsets.only(
+                        left: largeSize, bottom: mediumSize),
                     child: Text(
-                      'This is an example of moment post',
-                      style: TextStyle(
+                      moment.caption,
+                      style: const TextStyle(
                         color: Colors.white70,
                       ),
                     ),
