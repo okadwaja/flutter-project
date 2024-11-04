@@ -101,6 +101,9 @@ class _MainPageState extends State<MainPage> {
         unselectedItemColor: secondaryColor,
         onTap: _onPageChanged,
         currentIndex: _seletedPageIndex,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
