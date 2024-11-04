@@ -50,7 +50,7 @@ class PostItem extends StatelessWidget {
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.only(left: largeSize, bottom: smallSize),
+                        EdgeInsets.only(left: largeSize, bottom: mediumSize),
                     child: Text(
                       'This is an example of moment post',
                       style: TextStyle(
