@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/resources/dimentions.dart';
-import 'package:myapp/widgets/post_action.dart';
-import 'package:myapp/widgets/post_title.dart';
+import 'package:aplikasi01/resources/dimentions.dart';
+import 'package:aplikasi01/widgets/post_action.dart';
+import 'package:aplikasi01/widgets/post_title.dart';
 
 import '../models/moment.dart';
 

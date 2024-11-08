@@ -1,6 +1,6 @@
 {
-    "name": "myapp",
-    "short_name": "myapp",
+    "name": "aplikasi01",
+    "short_name": "aplikasi01",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

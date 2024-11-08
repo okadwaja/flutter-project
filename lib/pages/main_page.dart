@@ -1,8 +1,8 @@
 import 'package:faker/faker.dart' as faker;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/pages/home_page.dart';
-import 'package:myapp/resources/colors.dart';
+import 'package:aplikasi01/pages/home_page.dart';
+import 'package:aplikasi01/resources/colors.dart';
 import 'package:nanoid2/nanoid2.dart';
 
 import '../models/moment.dart';

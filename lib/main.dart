@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/main_page.dart';
-import 'package:myapp/resources/colors.dart';
-import 'package:myapp/resources/strings.dart';
+import 'package:aplikasi01/pages/main_page.dart';
+import 'package:aplikasi01/resources/colors.dart';
+import 'package:aplikasi01/resources/strings.dart';
 
 void main() {
   runApp(const MyApp());

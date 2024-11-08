@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/resources/dimentions.dart';
+import 'package:aplikasi01/resources/dimentions.dart';
 import 'package:nanoid2/nanoid2.dart';
 
 import '../models/moment.dart';
