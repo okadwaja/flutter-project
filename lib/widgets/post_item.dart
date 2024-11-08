@@ -1,3 +1,4 @@
+import 'package:aplikasi01/pages/comment_create_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aplikasi01/resources/dimentions.dart';
 import 'package:aplikasi01/widgets/post_action.dart';
@@ -51,6 +52,16 @@ class PostItem extends StatelessWidget {
                       PostAction(
                         icon: 'assets/icons/fi-br-comment.svg',
                         label: moment.commentCount.toString(),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CommentCreatePage(
+                                onSaved: (Moment newMoment) {},
+                              ),
+                            ),
+                          );
+                        },
                       ),
                       PostAction(
                         icon: 'assets/icons/fi-br-bookmark.svg',
