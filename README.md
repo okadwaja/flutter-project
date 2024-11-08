@@ -1,4 +1,4 @@
-# Moblie Programming - CA221
+# Mobile Programming - CA221
 # Tugas Pertemuan 06
 
 **Nama**: I Kadek Oka Dwaja Putra  
