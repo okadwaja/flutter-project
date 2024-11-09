@@ -168,20 +168,34 @@ class _MomentCreatePageState extends State<MomentCreatePage> {
                   },
                 ),
                 const SizedBox(height: largeSize),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    foregroundColor: Colors.white,
+                SizedBox(
+                  height: 50.0,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      foregroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    onPressed: _saveMoment,
+                    child: const Text('Save'),
                   ),
-                  onPressed: _saveMoment,
-                  child: const Text('Save'),
                 ),
                 const SizedBox(height: mediumSize),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
+                SizedBox(
+                  height: 50.0,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    child: const Text('Cancel'),
+                  ),
                 ),
               ],
             ),
