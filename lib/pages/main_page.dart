@@ -2,6 +2,7 @@ import 'package:faker/faker.dart' as faker;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:myapp/pages/home_page.dart';
+import 'package:myapp/pages/search_page.dart';
 import 'package:myapp/resources/colors.dart';
 import 'package:nanoid2/nanoid2.dart';
 
@@ -68,9 +69,7 @@ class _MainPageState extends State<MainPage> {
     // List halaman yang tersedia
     final List<Widget> pages = [
       HomePage(moments: _moments),
-      const Center(
-        child: Text('Search'),
-      ),
+      SearchPage(moments: _moments),
       const Center(
         child: Text('Create Moment'),
       ),
