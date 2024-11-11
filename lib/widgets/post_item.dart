@@ -4,6 +4,7 @@ import 'package:myapp/widgets/post_action.dart';
 import 'package:myapp/widgets/post_title.dart';
 
 import '../models/moment.dart';
+import '../pages/commment_page.dart';
 
 class PostItem extends StatelessWidget {
   const PostItem({
@@ -47,14 +48,22 @@ class PostItem extends StatelessWidget {
                       PostAction(
                         icon: 'assets/icons/fi-br-heart.svg',
                         label: moment.likeCount.toString(),
+                        onTap: () {},
                       ),
                       PostAction(
                         icon: 'assets/icons/fi-br-comment.svg',
                         label: moment.commentCount.toString(),
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return CommentPage(onSaved: (_) {});
+                          }));
+                        },
                       ),
                       PostAction(
                         icon: 'assets/icons/fi-br-bookmark.svg',
                         label: moment.bookmarkCount.toString(),
+                        onTap: () {},
                       ),
                     ],
                   ),

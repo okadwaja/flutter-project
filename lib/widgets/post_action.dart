@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/pages/commment_page.dart';
 
 class PostAction extends StatelessWidget {
   const PostAction({
     super.key,
     required this.icon,
     required this.label,
+    required this.onTap,
   });
   final String icon;
   final String label;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return CommentPage(onSaved: (_) {});
-            }));
-          },
+          onPressed: onTap,
           icon: SvgPicture.asset(
             icon,
             colorFilter: const ColorFilter.mode(
