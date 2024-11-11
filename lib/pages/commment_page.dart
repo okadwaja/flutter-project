@@ -19,7 +19,7 @@ class _CommentPageState extends State<CommentPage> {
   final _dataMoment = {};
 
   // Membuat method untuk menyimpan data moment
-  void _saveMoment() {
+  void _saveComment() {
     if (_formKey.currentState!.validate()) {
       // Menyimpan data inputan pengguna ke map _dataMoment
       _formKey.currentState!.save();
@@ -90,20 +90,34 @@ class _CommentPageState extends State<CommentPage> {
                   },
                 ),
                 const SizedBox(height: largeSize),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    foregroundColor: Colors.white,
+                SizedBox(
+                  height: 50.0,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      foregroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    onPressed: _saveComment,
+                    child: const Text('Save'),
                   ),
-                  onPressed: _saveMoment,
-                  child: const Text('Send'),
                 ),
                 const SizedBox(height: mediumSize),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
+                SizedBox(
+                  height: 50.0,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    child: const Text('Cancel'),
+                  ),
                 ),
               ],
             ),
