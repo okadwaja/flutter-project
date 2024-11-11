@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myapp/pages/commment_page.dart';
 
 class PostAction extends StatelessWidget {
   const PostAction({
@@ -15,7 +16,11 @@ class PostAction extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return CommentPage(onSaved: (_) {});
+            }));
+          },
           icon: SvgPicture.asset(
             icon,
             colorFilter: const ColorFilter.mode(
