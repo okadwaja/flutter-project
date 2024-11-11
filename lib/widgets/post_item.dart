@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/comment_page.dart';
 import 'package:myapp/resources/dimentions.dart';
 import 'package:myapp/widgets/post_action.dart';
 import 'package:myapp/widgets/post_title.dart';
 
 import '../models/moment.dart';
-import '../pages/commment_page.dart';
 
 class PostItem extends StatelessWidget {
   const PostItem({
@@ -61,7 +61,9 @@ class PostItem extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
-                            return CommentPage(onSaved: (_) {});
+                            return CommentPage(
+                              momentId: moment.id,
+                            );
                           }));
                         },
                       ),

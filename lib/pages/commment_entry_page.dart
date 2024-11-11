@@ -4,16 +4,16 @@ import 'package:myapp/resources/dimentions.dart';
 import '../models/moment.dart';
 import '../resources/colors.dart';
 
-class CommentPage extends StatefulWidget {
-  const CommentPage({super.key, required this.onSaved});
+class CommentEntryPage extends StatefulWidget {
+  const CommentEntryPage({super.key, required this.onSaved});
 
   final Function(Moment newMoment) onSaved;
 
   @override
-  State<CommentPage> createState() => _CommentPageState();
+  State<CommentEntryPage> createState() => _CommentEntryPageState();
 }
 
-class _CommentPageState extends State<CommentPage> {
+class _CommentEntryPageState extends State<CommentEntryPage> {
   // Membuat object form global key
   final _formKey = GlobalKey<FormState>();
   final _dataMoment = {};
