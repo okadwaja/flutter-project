@@ -10,9 +10,13 @@ class PostItem extends StatelessWidget {
   const PostItem({
     super.key,
     required this.moment,
+    required this.onDelete,
+    required this.onUpdate,
   });
 
   final Moment moment;
+  final Function(String id) onUpdate;
+  final Function(String id) onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +39,9 @@ class PostItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             PostTitle(
-              creator: moment.creator,
-              location: moment.location,
+              moment: moment,
+              onUpdate: onUpdate,
+              onDelete: onDelete,
             ),
             Padding(
               padding: const EdgeInsets.all(smallSize),
