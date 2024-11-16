@@ -6,8 +6,8 @@ import 'package:nanoid2/nanoid2.dart';
 import '../models/moment.dart';
 import '../resources/colors.dart';
 
-class MomentCreatePage extends StatefulWidget {
-  const MomentCreatePage({
+class MomentEntryPage extends StatefulWidget {
+  const MomentEntryPage({
     super.key,
     required this.onSaved,
     this.selectedMoment,
@@ -17,10 +17,10 @@ class MomentCreatePage extends StatefulWidget {
   final Moment? selectedMoment;
 
   @override
-  State<MomentCreatePage> createState() => _MomentCreatePageState();
+  State<MomentEntryPage> createState() => _MomentEntryPageState();
 }
 
-class _MomentCreatePageState extends State<MomentCreatePage> {
+class _MomentEntryPageState extends State<MomentEntryPage> {
   // Membuat object form global key
   final _formKey = GlobalKey<FormState>();
   final _dataMoment = {};

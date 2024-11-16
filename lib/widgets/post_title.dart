@@ -1,5 +1,4 @@
 import 'package:aplikasi01/models/moment.dart';
-import 'package:aplikasi01/resources/colors.dart';
 import 'package:flutter/material.dart';
 
 class PostTitle extends StatelessWidget {

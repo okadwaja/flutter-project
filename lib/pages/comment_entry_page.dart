@@ -5,16 +5,16 @@ import 'package:nanoid2/nanoid2.dart';
 import '../models/moment.dart';
 import '../resources/colors.dart';
 
-class CommentCreatePage extends StatefulWidget {
-  const CommentCreatePage({super.key, required this.onSaved});
+class CommentEntryPage extends StatefulWidget {
+  const CommentEntryPage({super.key, required this.onSaved});
 
   final Function(Moment newMoment) onSaved;
 
   @override
-  State<CommentCreatePage> createState() => _CommentCreatePageState();
+  State<CommentEntryPage> createState() => _CommentEntryPageState();
 }
 
-class _CommentCreatePageState extends State<CommentCreatePage> {
+class _CommentEntryPageState extends State<CommentEntryPage> {
   // Membuat object form global key
   final _formKey = GlobalKey<FormState>();
   final _dataMoment = {};

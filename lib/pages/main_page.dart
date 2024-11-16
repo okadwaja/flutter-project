@@ -7,7 +7,7 @@ import 'package:aplikasi01/resources/colors.dart';
 import 'package:nanoid2/nanoid2.dart';
 
 import '../models/moment.dart';
-import 'moment_create_page.dart';
+import 'moment_entry_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> {
     if (index == 2) {
       // Jika index halaman adalah 2, maka navigasi ke halaman create moment
       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return MomentCreatePage(onSaved: _saveMoment);
+        return MomentEntryPage(onSaved: _saveMoment);
       }));
     } else {
       // Jika index halaman bukan 2, maka navigasi ke halaman yang sesuai
@@ -87,7 +87,7 @@ class _MainPageState extends State<MainPage> {
                   Navigator.of(context).pop();
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return MomentCreatePage(
+                    return MomentEntryPage(
                       onSaved: _saveMoment,
                       selectedMoment: selectedMoment,
                     );
