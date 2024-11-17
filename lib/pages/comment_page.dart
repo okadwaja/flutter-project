@@ -52,13 +52,51 @@ class _CommentPageState extends State<CommentPage> {
                     ),
                     trailing: PopupMenuButton<String>(
                       onSelected: (String value) {
-                        // Aksi berdasarkan item yang dipilih
                         if (value == 'edit') {
-                          // Tambahkan logika untuk edit
-                          print('Edit dipilih');
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => CommentEntryPage(
+                                selectedComment: comment,
+                                onSaved: (updatedComment) {
+                                  setState(() {
+                                    final index = _comments.indexWhere(
+                                        (c) => c.id == updatedComment.id);
+                                    if (index != -1) {
+                                      _comments[index] = updatedComment;
+                                    }
+                                  });
+                                },
+                              ),
+                            ),
+                          );
                         } else if (value == 'delete') {
-                          // Tambahkan logika untuk delete
-                          print('Delete dipilih');
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Delete Comment'),
+                              content: const Text(
+                                  'Are you sure you want to delete this comment?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).pop(),
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _comments.removeWhere(
+                                          (c) => c.id == comment.id);
+                                    });
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text(
+                                    'Delete',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
                         }
                       },
                       itemBuilder: (BuildContext context) =>
@@ -75,12 +113,8 @@ class _CommentPageState extends State<CommentPage> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(_dateFormat.format(
-                              comment.createdAt)), // Menampilkan tanggal
-                          const Icon(
-                            Icons.more_vert,
-                            color: primaryColor, // Ikon menu dropdown
-                          ),
+                          Text(_dateFormat.format(comment.createdAt)),
+                          const Icon(Icons.more_vert, color: primaryColor),
                         ],
                       ),
                     ),
