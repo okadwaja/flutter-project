@@ -4,7 +4,6 @@ import 'package:aplikasi01/resources/dimentions.dart';
 import 'package:intl/intl.dart';
 import 'package:nanoid2/nanoid2.dart';
 
-import '../models/comment.dart';
 import '../resources/colors.dart';
 
 class CommentEntryPage extends StatefulWidget {
@@ -32,7 +31,6 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
 
   //Date Format
   final _dateFormat = DateFormat('yyyy-MM-dd');
-  late DateTime _selectedDate;
 
   @override
   void initState() {
@@ -42,9 +40,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
       _createdAtController.text = _dateFormat.format(selectedMoment.createdAt);
       _creatorController.text = selectedMoment.creator;
       _contentController.text = selectedMoment.content;
-    } else {
-      _selectedDate = DateTime.now();
-    }
+    } else {}
   }
 
   // Membuat method untuk menyimpan data moment
