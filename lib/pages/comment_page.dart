@@ -92,7 +92,12 @@ class _CommentPageState extends State<CommentPage> {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
             return CommentEntryPage(
-              onSaved: (newMoment) {},
+              onSaved: (newComment) {
+                setState(() {
+                  _comments.add(newComment);
+                });
+              },
+              selectedComment: null, //buat komen baru
             );
           }));
         },
