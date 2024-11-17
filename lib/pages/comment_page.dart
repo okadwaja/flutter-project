@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:faker/faker.dart' as faker;
 import 'package:intl/intl.dart';
 import 'package:nanoid2/nanoid2.dart';
+import 'package:aplikasi01/resources/colors.dart';
 
 class CommentPage extends StatefulWidget {
   const CommentPage({super.key, required this.momentId});
@@ -49,7 +50,40 @@ class _CommentPageState extends State<CommentPage> {
                       backgroundImage:
                           NetworkImage('https://i.pravatar.cc/150'),
                     ),
-                    trailing: Text(_dateFormat.format(comment.createdAt)),
+                    trailing: PopupMenuButton<String>(
+                      onSelected: (String value) {
+                        // Aksi berdasarkan item yang dipilih
+                        if (value == 'edit') {
+                          // Tambahkan logika untuk edit
+                          print('Edit dipilih');
+                        } else if (value == 'delete') {
+                          // Tambahkan logika untuk delete
+                          print('Delete dipilih');
+                        }
+                      },
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                          value: 'edit',
+                          child: Text('Edit'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'delete',
+                          child: Text('Delete'),
+                        ),
+                      ],
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(_dateFormat.format(
+                              comment.createdAt)), // Menampilkan tanggal
+                          const Icon(
+                            Icons.more_vert,
+                            color: primaryColor, // Ikon menu dropdown
+                          ),
+                        ],
+                      ),
+                    ),
                   ))
               .toList(),
         ),
