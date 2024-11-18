@@ -4,4 +4,4 @@
 **Nama**: I Kadek Oka Dwaja Putra  
 **NIM**: 220030347
 
-[Tampilan Halaman Search](aassets/image.png)
+[Tampilan Halaman Utama](assets/image.png)
