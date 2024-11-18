@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:aplikasi01/models/moment.dart';
-import 'package:aplikasi01/widgets/post_item.dart';
+import 'package:aplikasi01/models/country.dart'; // Import model Country
+import 'package:aplikasi01/widgets/post_item.dart'; // Pastikan widget PostItem dapat menerima Country
 
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
-    required this.moments,
+    required this.countrys,
     required this.onUpdate,
     required this.onDelete,
   });
 
-  final List<Moment> moments;
+  final List<Country> countrys; // Menggunakan List<Country> bukan List<Moment>
   final Function(String id) onUpdate;
   final Function(String id) onDelete;
 
@@ -18,10 +18,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: moments
+        children: countrys
             .map(
-              (momentItem) => PostItem(
-                moment: momentItem,
+              (countryItem) => PostItem(
+                // Menampilkan item Country menggunakan PostItem
+                country: countryItem, // Pastikan PostItem menerima Country
                 onUpdate: onUpdate,
                 onDelete: onDelete,
               ),

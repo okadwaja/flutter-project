@@ -1,14 +1,15 @@
-import 'package:aplikasi01/models/moment.dart';
+import 'package:aplikasi01/models/country.dart'; // Pastikan file model sesuai
 import 'package:flutter/material.dart';
 
 class PostTitle extends StatelessWidget {
   const PostTitle({
     super.key,
-    required this.moment,
+    required this.country,
     required this.onDelete,
     required this.onUpdate,
   });
-  final Moment moment;
+
+  final Country country; // Ganti dari Moment ke Country
   final Function(String id) onDelete;
   final Function(String id) onUpdate;
 
@@ -16,37 +17,37 @@ class PostTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        moment.creator,
+        country.name, // Menampilkan nama negara
         style:
             const TextStyle(fontWeight: FontWeight.bold, color: Colors.white70),
       ),
-      subtitle:
-          Text(moment.location, style: const TextStyle(color: Colors.white54)),
-      leading: const CircleAvatar(
-        backgroundImage: NetworkImage('https://i.pravatar.cc/150'),
+      subtitle: Text(
+        country.code, // Menampilkan kode negara
+        style: const TextStyle(color: Colors.white54),
       ),
       trailing: PopupMenuButton<String>(
-          onSelected: (value) {
-            if (value == 'Edit') {
-              onUpdate(moment.id);
-            } else if (value == 'Delete') {
-              onDelete(moment.id);
-            }
-          },
-          itemBuilder: (context) => [
-                const PopupMenuItem(
-                  value: 'Edit',
-                  child: Text('Edit'),
-                ),
-                const PopupMenuItem(
-                  value: 'Delete',
-                  child: Text('Delete'),
-                ),
-              ],
-          child: CircleAvatar(
-            backgroundColor: Colors.white.withOpacity(0.5),
-            child: const Icon(Icons.more_vert, color: Colors.white),
-          )),
+        onSelected: (value) {
+          if (value == 'Edit') {
+            onUpdate(country.id); // Edit data berdasarkan ID
+          } else if (value == 'Delete') {
+            onDelete(country.id); // Hapus data berdasarkan ID
+          }
+        },
+        itemBuilder: (context) => [
+          const PopupMenuItem(
+            value: 'Edit',
+            child: Text('Edit'),
+          ),
+          const PopupMenuItem(
+            value: 'Delete',
+            child: Text('Delete'),
+          ),
+        ],
+        child: CircleAvatar(
+          backgroundColor: Colors.white.withOpacity(0.5),
+          child: const Icon(Icons.more_vert, color: Colors.white),
+        ),
+      ),
     );
   }
 }

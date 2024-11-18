@@ -1,1 +1,1 @@
-const appName = 'Moments';
+const appName = 'Data-Negara';
