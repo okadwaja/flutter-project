@@ -5,7 +5,6 @@ import 'package:myapp/views/moment/bloc/moment_bloc.dart';
 import 'package:myapp/views/moment/pages/moment_page.dart';
 import 'package:myapp/views/moment/pages/moment_search_page.dart';
 import 'package:myapp/core/resources/colors.dart';
-import '../../moment/pages/moment_entry_page.dart';
 
 class MainPage extends StatefulWidget {
   static const String routeName = '/';
@@ -23,7 +22,7 @@ class _MainPageState extends State<MainPage> {
   void _onPageChanged(int index) {
     if (index == 2) {
       // Jika index halaman adalah 2, maka navigasi ke halaman create moment
-      Navigator.pushNamed(context, MomentEntryPage.routeName);
+      context.read<MomentBloc>().add(MomentNavigateToAddEvent());
     } else {
       // Jika index halaman bukan 2, maka navigasi ke halaman yang sesuai
       setState(() {
