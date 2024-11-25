@@ -1,17 +1,14 @@
-import 'package:faker/faker.dart' as faker;
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
-import 'package:collection/collection.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myapp/views/moment/bloc/moment_bloc.dart';
 import 'package:myapp/views/moment/pages/moment_page.dart';
 import 'package:myapp/views/moment/pages/moment_search_page.dart';
 import 'package:myapp/core/resources/colors.dart';
-import 'package:nanoid2/nanoid2.dart';
-
-import '../../../models/moment.dart';
 import '../../moment/pages/moment_entry_page.dart';
 
 class MainPage extends StatefulWidget {
+  static const String routeName = '/';
   const MainPage({super.key});
 
   @override
@@ -22,17 +19,11 @@ class _MainPageState extends State<MainPage> {
   // Variabel untuk menyimpan index halaman yang aktif
   int _seletedPageIndex = 0;
 
-  final _faker = faker.Faker();
-  // List Moments
-  List<Moment> _moments = [];
-
   // Fungsi untuk mengubah index halaman yang aktif
   void _onPageChanged(int index) {
     if (index == 2) {
       // Jika index halaman adalah 2, maka navigasi ke halaman create moment
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return MomentEntryPage(onSaved: _saveMoment);
-      }));
+      Navigator.pushNamed(context, MomentEntryPage.routeName);
     } else {
       // Jika index halaman bukan 2, maka navigasi ke halaman yang sesuai
       setState(() {
@@ -44,119 +35,15 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    _moments = List.generate(
-      2,
-      (index) => Moment(
-        id: nanoid(),
-        momentDate: _faker.date.dateTime(),
-        creator: _faker.person.name(),
-        location: _faker.address.city(),
-        imageUrl: 'https://picsum.photos/800/600?random=$index',
-        caption: _faker.lorem.sentence(),
-        likeCount: faker.random.integer(1000),
-        commentCount: faker.random.integer(100),
-        bookmarkCount: faker.random.integer(10),
-      ),
-    );
-  }
-
-  void _saveMoment(Moment newMoment) {
-    final existingMoment = getMomentById(newMoment.id);
-    if (existingMoment == null) {
-      setState(() {
-        _moments.add(newMoment);
-      });
-    } else {
-      setState(() {
-        _moments[_moments.indexOf(existingMoment)] = newMoment;
-      });
-    }
-  }
-
-  void onUpdate(String momentId) {
-    final selectedMoment = getMomentById(momentId);
-    if (selectedMoment != null) {
-      // Menampilkan dialog konfirmasi pembaruan data moment
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Update Moment'),
-            content: const Text('Are you sure you want to update this moment?'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return MomentEntryPage(
-                      onSaved: _saveMoment,
-                      selectedMoment: selectedMoment,
-                    );
-                  }));
-                },
-                child: const Text('Sure'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-
-  void onDelete(String momentId) {
-    final selectedMoment = getMomentById(momentId);
-    if (selectedMoment != null) {
-      // Menampilkan dialog konfirmasi penghapusan moment
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Delete Moment'),
-            content: const Text('Are you sure you want to delete this moment?'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _moments.remove(selectedMoment);
-                  });
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Sure'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-
-  Moment? getMomentById(String momentId) {
-    return _moments.firstWhereOrNull((moment) => moment.id == momentId);
+    context.read<MomentBloc>().add(MomentGetEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     // List halaman yang tersedia
     final List<Widget> pages = [
-      MomentPage(
-        moments: _moments,
-        onUpdate: onUpdate,
-        onDelete: onDelete,
-      ),
-      MomentSearchPage(moments: _moments),
+      const MomentPage(),
+      const MomentSearchPage(),
       const Center(
         child: Text('Create Moment'),
       ),

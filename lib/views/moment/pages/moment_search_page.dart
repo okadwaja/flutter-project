@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/resources/dimentions.dart';
+import 'package:myapp/views/moment/bloc/moment_bloc.dart';
 
-import '../../../models/moment.dart';
 import '../widgets/post_item_square.dart';
 import '../widgets/search_and_filter.dart';
 
 class MomentSearchPage extends StatelessWidget {
-  const MomentSearchPage({super.key, required this.moments});
+  const MomentSearchPage({super.key});
 
-  final List<Moment> moments;
   @override
   Widget build(BuildContext context) {
+    final moments = context.read<MomentBloc>().moments;
     return Padding(
       padding: const EdgeInsets.all(largeSize),
       child: Column(
