@@ -14,6 +14,7 @@ class MomentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<MomentBloc, MomentState>(
       listenWhen: (previous, current) => current is MomentActionState,
+      buildWhen: (previous, current) => current is! MomentActionState,
       listener: (context, state) {
         if (state is MomentNavigateToAddActionState) {
           Navigator.pushNamed(context, MomentEntryPage.routeName);
