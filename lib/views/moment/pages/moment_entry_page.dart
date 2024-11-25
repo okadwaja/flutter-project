@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:myapp/resources/dimentions.dart';
+import 'package:myapp/core/resources/dimentions.dart';
 import 'package:nanoid2/nanoid2.dart';
 
-import '../models/moment.dart';
-import '../resources/colors.dart';
+import '../../../models/moment.dart';
+import '../../../core/resources/colors.dart';
 
 class MomentEntryPage extends StatefulWidget {
   const MomentEntryPage({

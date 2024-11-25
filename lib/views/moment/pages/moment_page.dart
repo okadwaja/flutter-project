@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/moment.dart';
-import 'package:myapp/widgets/post_item.dart';
+import 'package:myapp/views/moment/widgets/post_item.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+class MomentPage extends StatelessWidget {
+  const MomentPage({
     super.key,
     required this.moments,
     required this.onUpdate,

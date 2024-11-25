@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/resources/dimentions.dart';
+import 'package:myapp/core/resources/dimentions.dart';
 
-import '../models/moment.dart';
+import '../../../models/moment.dart';
 import '../widgets/post_item_square.dart';
 import '../widgets/search_and_filter.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({super.key, required this.moments});
+class MomentSearchPage extends StatelessWidget {
+  const MomentSearchPage({super.key, required this.moments});
 
   final List<Moment> moments;
   @override

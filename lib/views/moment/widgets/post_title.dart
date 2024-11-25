@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/resources/colors.dart';
+import 'package:myapp/core/resources/colors.dart';
 
-import '../models/moment.dart';
+import '../../../models/moment.dart';
 
 class PostTitle extends StatelessWidget {
   const PostTitle({

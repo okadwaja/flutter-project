@@ -1,14 +1,15 @@
 import 'package:faker/faker.dart' as faker;
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/pages/home_page.dart';
-import 'package:myapp/pages/search_page.dart';
-import 'package:myapp/resources/colors.dart';
+import 'package:myapp/views/moment/pages/moment_page.dart';
+import 'package:myapp/views/moment/pages/moment_search_page.dart';
+import 'package:myapp/core/resources/colors.dart';
 import 'package:nanoid2/nanoid2.dart';
 
-import '../models/moment.dart';
-import 'moment_entry_page.dart';
+import '../../../models/moment.dart';
+import '../../moment/pages/moment_entry_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -150,12 +151,12 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     // List halaman yang tersedia
     final List<Widget> pages = [
-      HomePage(
+      MomentPage(
         moments: _moments,
         onUpdate: onUpdate,
         onDelete: onDelete,
       ),
-      SearchPage(moments: _moments),
+      MomentSearchPage(moments: _moments),
       const Center(
         child: Text('Create Moment'),
       ),
