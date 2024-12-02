@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/views/moment/bloc/moment_bloc.dart';
-import 'package:myapp/views/moment/pages/moment_page.dart';
-import 'package:myapp/views/moment/pages/moment_search_page.dart';
-import 'package:myapp/core/resources/colors.dart';
+import 'package:aplikasi01/views/moment/bloc/moment_bloc.dart';
+import 'package:aplikasi01/views/moment/pages/moment_page.dart';
+import 'package:aplikasi01/views/moment/pages/moment_search_page.dart';
+import 'package:aplikasi01/core/resources/colors.dart';
 
 class MainPage extends StatefulWidget {
   static const String routeName = '/';

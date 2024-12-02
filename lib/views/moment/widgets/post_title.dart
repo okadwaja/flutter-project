@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/core/resources/colors.dart';
+import 'package:aplikasi01/core/resources/colors.dart';
 
 import '../../../models/moment.dart';
 import '../bloc/moment_bloc.dart';
@@ -28,9 +28,13 @@ class PostTitle extends StatelessWidget {
       trailing: PopupMenuButton<String>(
         onSelected: (value) {
           if (value == 'Edit') {
-            context.read<MomentBloc>().add(MomentNavigateToUpdateEvent(moment.id));
+            context
+                .read<MomentBloc>()
+                .add(MomentNavigateToUpdateEvent(moment.id));
           } else if (value == 'Delete') {
-            context.read<MomentBloc>().add(MomentNavigateToDeleteEvent(moment.id));
+            context
+                .read<MomentBloc>()
+                .add(MomentNavigateToDeleteEvent(moment.id));
           }
         },
         itemBuilder: (context) => [

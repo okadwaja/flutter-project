@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/core/resources/dimentions.dart';
-import 'package:myapp/views/moment/bloc/moment_bloc.dart';
+import 'package:aplikasi01/core/resources/dimentions.dart';
+import 'package:aplikasi01/views/moment/bloc/moment_bloc.dart';
 
 import '../widgets/post_item_square.dart';
 import '../widgets/search_and_filter.dart';

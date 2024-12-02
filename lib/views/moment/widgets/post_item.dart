@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/views/comment/pages/comment_page.dart';
-import 'package:myapp/core/resources/dimentions.dart';
-import 'package:myapp/views/moment/widgets/post_action.dart';
-import 'package:myapp/views/moment/widgets/post_title.dart';
+import 'package:aplikasi01/views/comment/pages/comment_page.dart';
+import 'package:aplikasi01/core/resources/dimentions.dart';
+import 'package:aplikasi01/views/moment/widgets/post_action.dart';
+import 'package:aplikasi01/views/moment/widgets/post_title.dart';
 
 import '../../../models/moment.dart';
 

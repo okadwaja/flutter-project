@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/views/home/pages/main_page.dart';
-import 'package:myapp/core/resources/colors.dart';
-import 'package:myapp/core/resources/strings.dart';
-import 'package:myapp/views/moment/pages/moment_entry_page.dart';
+import 'package:aplikasi01/views/home/pages/main_page.dart';
+import 'package:aplikasi01/core/resources/colors.dart';
+import 'package:aplikasi01/core/resources/strings.dart';
+import 'package:aplikasi01/views/moment/pages/moment_entry_page.dart';
 
 import 'views/moment/bloc/moment_bloc.dart';
 

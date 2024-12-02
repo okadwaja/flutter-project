@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/views/moment/widgets/post_item.dart';
+import 'package:aplikasi01/views/moment/widgets/post_item.dart';
 
 import '../bloc/moment_bloc.dart';
 import 'moment_entry_page.dart';

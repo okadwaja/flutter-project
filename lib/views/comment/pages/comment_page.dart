@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:myapp/models/comment.dart';
+import 'package:aplikasi01/models/comment.dart';
 import 'package:faker/faker.dart' as faker;
 import 'package:nanoid2/nanoid2.dart';
 

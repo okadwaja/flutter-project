@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/resources/dimentions.dart';
+import 'package:aplikasi01/core/resources/dimentions.dart';
 
 import '../../../models/moment.dart';
 import '../../../core/resources/colors.dart';

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:myapp/models/moment.dart';
+import 'package:aplikasi01/models/moment.dart';
 import 'package:nanoid2/nanoid2.dart';
 import 'package:faker/faker.dart' as faker;
 // ignore: depend_on_referenced_packages
