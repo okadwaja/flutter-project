@@ -5,10 +5,11 @@ class Comment {
   String content;
   DateTime createdAt;
 
-  Comment(
-      {required this.id,
-      required this.momentId,
-      required this.creator,
-      required this.content,
-      required this.createdAt});
+  Comment({
+    required this.id,
+    required this.momentId,
+    required this.creator,
+    required this.content,
+    required this.createdAt,
+  });
 }

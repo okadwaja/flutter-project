@@ -6,19 +6,18 @@ class PostAction extends StatelessWidget {
     super.key,
     required this.icon,
     required this.label,
-    this.onTap, // Tambahkan parameter onTap
+    required this.onTap,
   });
-
   final String icon;
   final String label;
-  final VoidCallback? onTap; // Deklarasi onTap
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         IconButton(
-          onPressed: onTap, // Panggil onTap ketika ikon diklik
+          onPressed: onTap,
           icon: SvgPicture.asset(
             icon,
             colorFilter: const ColorFilter.mode(

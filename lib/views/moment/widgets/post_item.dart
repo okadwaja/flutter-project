@@ -1,22 +1,18 @@
-import 'package:aplikasi01/pages/comment_page.dart';
 import 'package:flutter/material.dart';
-import 'package:aplikasi01/resources/dimentions.dart';
-import 'package:aplikasi01/widgets/post_action.dart';
-import 'package:aplikasi01/widgets/post_title.dart';
+import 'package:aplikasi01/views/comment/pages/comment_page.dart';
+import 'package:aplikasi01/core/resources/dimentions.dart';
+import 'package:aplikasi01/views/moment/widgets/post_action.dart';
+import 'package:aplikasi01/views/moment/widgets/post_title.dart';
 
-import '../models/moment.dart';
+import '../../../models/moment.dart';
 
 class PostItem extends StatelessWidget {
   const PostItem({
     super.key,
     required this.moment,
-    required this.onDelete,
-    required this.onUpdate,
   });
 
   final Moment moment;
-  final Function(String id) onUpdate;
-  final Function(String id) onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +36,6 @@ class PostItem extends StatelessWidget {
           children: [
             PostTitle(
               moment: moment,
-              onUpdate: onUpdate,
-              onDelete: onDelete,
             ),
             Padding(
               padding: const EdgeInsets.all(smallSize),
@@ -53,6 +47,7 @@ class PostItem extends StatelessWidget {
                       PostAction(
                         icon: 'assets/icons/fi-br-heart.svg',
                         label: moment.likeCount.toString(),
+                        onTap: () {},
                       ),
                       PostAction(
                         icon: 'assets/icons/fi-br-comment.svg',
@@ -69,6 +64,7 @@ class PostItem extends StatelessWidget {
                       PostAction(
                         icon: 'assets/icons/fi-br-bookmark.svg',
                         label: moment.bookmarkCount.toString(),
+                        onTap: () {},
                       ),
                     ],
                   ),

@@ -1,20 +1,13 @@
-import 'package:aplikasi01/models/comment.dart';
 import 'package:flutter/material.dart';
-import 'package:aplikasi01/resources/dimentions.dart';
-import 'package:intl/intl.dart';
-import 'package:nanoid2/nanoid2.dart';
+import 'package:aplikasi01/core/resources/dimentions.dart';
 
-import '../resources/colors.dart';
+import '../../../models/moment.dart';
+import '../../../core/resources/colors.dart';
 
 class CommentEntryPage extends StatefulWidget {
-  const CommentEntryPage({
-    super.key,
-    required this.onSaved,
-    this.selectedComment,
-  });
+  const CommentEntryPage({super.key, required this.onSaved});
 
-  final Function(Comment newComment) onSaved;
-  final Comment? selectedComment;
+  final Function(Moment newMoment) onSaved;
 
   @override
   State<CommentEntryPage> createState() => _CommentEntryPageState();
@@ -23,25 +16,7 @@ class CommentEntryPage extends StatefulWidget {
 class _CommentEntryPageState extends State<CommentEntryPage> {
   // Membuat object form global key
   final _formKey = GlobalKey<FormState>();
-  final _dataComment = {};
-  // Text Editing Controller untuk set nilai awal pada text field
-  final _createdAtController = TextEditingController();
-  final _creatorController = TextEditingController();
-  final _contentController = TextEditingController();
-
-  //Date Format
-  final _dateFormat = DateFormat('yyyy-MM-dd');
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.selectedComment != null) {
-      final selectedMoment = widget.selectedComment!;
-      _createdAtController.text = _dateFormat.format(selectedMoment.createdAt);
-      _creatorController.text = selectedMoment.creator;
-      _contentController.text = selectedMoment.content;
-    } else {}
-  }
+  final _dataMoment = {};
 
   // Membuat method untuk menyimpan data moment
   void _saveComment() {
@@ -49,16 +24,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
       // Menyimpan data inputan pengguna ke map _dataMoment
       _formKey.currentState!.save();
       // Membuat object moment baru
-      final comment = Comment(
-        id: widget.selectedComment?.id ?? nanoid(),
-        momentId: _dataComment['momentId'] ?? 'default_moment_id',
-        creator: _dataComment['creator'],
-        content: _dataComment['content'],
-        createdAt: DateTime.now(),
-      );
 
-      // Menyimpan object moment ke list _moments
-      widget.onSaved(comment);
       // Menutup halaman create moment
       Navigator.of(context).pop();
     }
@@ -68,9 +34,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '${widget.selectedComment == null ? 'Create' : 'Edit'} Comment',
-        ),
+        title: const Text('Create Comment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(largeSize),
@@ -82,7 +46,6 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
               children: [
                 const Text('Creator'),
                 TextFormField(
-                  controller: _creatorController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(0.0),
@@ -99,13 +62,12 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
-                      _dataComment['creator'] = newValue;
+                      _dataMoment['creator'] = newValue;
                     }
                   },
                 ),
                 const Text('Comment'),
                 TextFormField(
-                  controller: _contentController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(0.0),
@@ -114,35 +76,48 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                     prefixIcon: const Icon(Icons.note),
                   ),
                   keyboardType: TextInputType.multiline,
-                  maxLines: 5, // Menambah jumlah baris
-                  minLines: 5, // Menentukan tinggi minimal kolom
+                  maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter comment description';
+                      return 'Please enter comment caption';
                     }
                     return null;
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
-                      _dataComment['content'] = newValue;
+                      _dataMoment['caption'] = newValue;
                     }
                   },
                 ),
                 const SizedBox(height: largeSize),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    foregroundColor: Colors.white,
+                SizedBox(
+                  height: 50.0,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      foregroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    onPressed: _saveComment,
+                    child: const Text('Save'),
                   ),
-                  onPressed: _saveComment,
-                  child: const Text('Save'),
                 ),
                 const SizedBox(height: mediumSize),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
+                SizedBox(
+                  height: 50.0,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    child: const Text('Cancel'),
+                  ),
                 ),
               ],
             ),
