@@ -6,6 +6,8 @@ import 'package:nanoid2/nanoid2.dart';
 
 import 'package:aplikasi01/core/resources/colors.dart';
 
+import '../../../repositories/databases/db_comment_repository.dart';
+
 class CommentEntryPage extends StatefulWidget {
   const CommentEntryPage({
     super.key,
@@ -44,11 +46,9 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   }
 
   // Membuat method untuk menyimpan data moment
-  void _saveComment() {
+  void _saveComment() async {
     if (_formKey.currentState!.validate()) {
-      // Menyimpan data inputan pengguna ke map _dataMoment
       _formKey.currentState!.save();
-      // Membuat object moment baru
       final comment = Comment(
         id: widget.selectedComment?.id ?? nanoid(),
         momentId: _dataComment['momentId'] ?? 'default_moment_id',
@@ -57,9 +57,15 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
         createdAt: DateTime.now(),
       );
 
-      // Menyimpan object moment ke list _moments
+      // Update komentar ke database jika ada ID
+      final commentRepository = DbCommentRepository();
+      if (widget.selectedComment != null) {
+        await commentRepository.updateComment(comment);
+      } else {
+        await commentRepository.addComment(comment);
+      }
+
       widget.onSaved(comment);
-      // Menutup halaman create moment
       Navigator.of(context).pop();
     }
   }

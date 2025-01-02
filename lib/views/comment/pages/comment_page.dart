@@ -1,10 +1,10 @@
 import 'package:aplikasi01/models/comment.dart';
 import 'package:aplikasi01/views/comment/pages/comment_entry_page.dart';
 import 'package:flutter/material.dart';
-import 'package:faker/faker.dart' as faker;
 import 'package:intl/intl.dart';
-import 'package:nanoid2/nanoid2.dart';
 import 'package:aplikasi01/core/resources/colors.dart';
+
+import '../../../repositories/databases/db_comment_repository.dart';
 
 class CommentPage extends StatefulWidget {
   const CommentPage({super.key, required this.momentId});
@@ -16,22 +16,21 @@ class CommentPage extends StatefulWidget {
 
 class _CommentPageState extends State<CommentPage> {
   List<Comment> _comments = [];
-  final _faker = faker.Faker();
   final _dateFormat = DateFormat('dd MMM yyy');
 
   @override
   void initState() {
     super.initState();
-    _comments = List.generate(
-      5,
-      (index) => Comment(
-        id: nanoid(),
-        creator: _faker.person.name(),
-        content: _faker.lorem.sentence(),
-        createdAt: _faker.date.dateTime(),
-        momentId: widget.momentId,
-      ),
-    );
+    _loadComments();
+  }
+
+  void _loadComments() async {
+    final commentRepository = DbCommentRepository();
+    final comments =
+        await commentRepository.getCommentsByMomentId(widget.momentId);
+    setState(() {
+      _comments = comments;
+    });
   }
 
   @override
@@ -82,7 +81,11 @@ class _CommentPageState extends State<CommentPage> {
                                   child: const Text('Cancel'),
                                 ),
                                 TextButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    final commentRepository =
+                                        DbCommentRepository();
+                                    await commentRepository
+                                        .deleteComment(comment.id);
                                     setState(() {
                                       _comments.removeWhere(
                                           (c) => c.id == comment.id);

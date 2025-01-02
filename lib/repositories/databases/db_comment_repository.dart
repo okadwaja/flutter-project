@@ -25,9 +25,9 @@ class DbCommentRepository extends AbsCommentRepository {
   Future<void> deleteComment(String commentId) async {
     try {
       final db = await databaseHelper.database;
-      // Melakukan operasi delete
+      // Melakukan operasi delete dari tabel comments
       await db.delete(
-        DatabaseHelper.tableMoments,
+        DatabaseHelper.tableComments, // Menggunakan tableComments
         where: 'id = ?',
         whereArgs: [commentId],
       );
@@ -62,12 +62,18 @@ class DbCommentRepository extends AbsCommentRepository {
   Future<List<Comment>> getCommentsByMomentId(String momentId) async {
     try {
       final db = await databaseHelper.database;
-      // Melakukan operasi select
-      final result = await db.query(DatabaseHelper.tableMoments);
-      // Mengembalikan hasil
+      // Melakukan operasi select untuk mengambil komentar berdasarkan momentId
+      final result = await db.query(
+        DatabaseHelper.tableComments,
+        where: 'id = ?',
+        whereArgs: [
+          momentId
+        ], // Memastikan kita mengambil komentar yang sesuai dengan momentId
+      );
+      // Mengembalikan hasil sebagai list of Comment
       return result.map((e) => Comment.fromMap(e)).toList();
     } catch (e) {
-      log(e.toString(), name: 'db_comment_repository:getAllComment');
+      log(e.toString(), name: 'db_comment_repository:getCommentsByMomentId');
       return [];
     }
   }
