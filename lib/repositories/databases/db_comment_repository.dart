@@ -65,7 +65,7 @@ class DbCommentRepository extends AbsCommentRepository {
       // Melakukan operasi select untuk mengambil komentar berdasarkan momentId
       final result = await db.query(
         DatabaseHelper.tableComments,
-        where: 'id = ?',
+        where: 'momentId = ?',
         whereArgs: [
           momentId
         ], // Memastikan kita mengambil komentar yang sesuai dengan momentId

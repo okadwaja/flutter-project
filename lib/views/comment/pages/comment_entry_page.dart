@@ -49,6 +49,10 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   void _saveComment() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
+      // Simpan referensi Navigator sebelum await
+      final navigator = Navigator.of(context);
+
       final comment = Comment(
         id: widget.selectedComment?.id ?? nanoid(),
         momentId: _dataComment['momentId'] ?? 'default_moment_id',
@@ -57,8 +61,8 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
         createdAt: DateTime.now(),
       );
 
-      // Update komentar ke database jika ada ID
       final commentRepository = DbCommentRepository();
+
       if (widget.selectedComment != null) {
         await commentRepository.updateComment(comment);
       } else {
@@ -66,7 +70,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
       }
 
       widget.onSaved(comment);
-      Navigator.of(context).pop();
+      navigator.pop(); // Gunakan navigator, bukan context langsung
     }
   }
 

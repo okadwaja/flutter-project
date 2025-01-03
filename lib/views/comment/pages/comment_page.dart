@@ -28,6 +28,7 @@ class _CommentPageState extends State<CommentPage> {
     final commentRepository = DbCommentRepository();
     final comments =
         await commentRepository.getCommentsByMomentId(widget.momentId);
+    debugPrint('Loaded comments: $comments');
     setState(() {
       _comments = comments;
     });
